@@ -1,1 +1,1 @@
-double** transpose(double** matrix, int* matrix_size);
+double** transpose(double** matrix, int rows, int cols);

@@ -17,7 +17,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 
 	char operation_input;
 	printf("Your matrix:\n");
-	print_matrix(matrix, matrix_size);
+	print_matrix(matrix, matrix_size[0], matrix_size[1]);
 	while(1) {
 		printf("Press:\n");
 		if(matrix_size[0] == matrix_size[1]) {
@@ -43,7 +43,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 				}
 				break;
 			case 't':
-				double** transposed = transpose(matrix, matrix_size);
+				double** transposed = transpose(matrix, matrix_size[0], matrix_size[1]);
 				free_matrix(matrix, matrix_size[0]);
 				matrix = transposed;
 				int temp = matrix_size[0];
@@ -52,7 +52,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 				break;
 			case 'm':
 				second_matrix_size = get_matrix_size(matrix_size[1]);
-				second_matrix = fill_matrix(second_matrix_size);
+				second_matrix = fill_matrix(second_matrix_size[0], second_matrix_size[1]);
 				double** multiplied = multiply(matrix, second_matrix, matrix_size[0], matrix_size[1], second_matrix_size[1]); 
 				free_matrix(matrix, matrix_size[0]);
 				matrix = multiplied;
@@ -61,14 +61,14 @@ void operations_loop(double** matrix, int* matrix_size) {
 				free(second_matrix_size);
 				break;
 			case 'a':
-				second_matrix = fill_matrix(matrix_size);
+				second_matrix = fill_matrix(matrix_size[0],matrix_size[1]);
 				double** added = add(matrix, second_matrix, matrix_size); 
 				free_matrix(matrix, matrix_size[0]);
 				matrix = added;
 				free_matrix(second_matrix, matrix_size[0]);
 				break;
 			case 's':
-				second_matrix = fill_matrix(matrix_size);
+				second_matrix = fill_matrix(matrix_size[0],matrix_size[1]);
 				double** substracted = substract(matrix, second_matrix, matrix_size);
 				free_matrix(matrix, matrix_size[0]);
 				free_matrix(second_matrix, matrix_size[0]);
@@ -87,7 +87,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 				free_matrix(matrix, matrix_size[0]);
 				free(matrix_size);
 				matrix_size = get_matrix_size(0);
-				matrix = fill_matrix(matrix_size);
+				matrix = fill_matrix(matrix_size[0], matrix_size[1]);
 				break;
 			case 'q':
 				free_matrix(matrix, matrix_size[0]);
@@ -98,7 +98,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 				break;
 		}
 		printf("\n");
-		print_matrix(matrix, matrix_size);
+		print_matrix(matrix, matrix_size[0], matrix_size[1]);
 	}
 	free_matrix(matrix, matrix_size[0]);
 	free(matrix_size);

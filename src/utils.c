@@ -25,14 +25,14 @@ int* get_matrix_size(int set_no_rows){
 	}
 }
 
-double** fill_matrix(int* matrix_size) {
-	double** matrix = malloc(matrix_size[0] * sizeof(double*));
-	for(int i = 0; i < matrix_size[0]; i++) {
-		matrix[i] = malloc(matrix_size[1] * sizeof(double));
+double** fill_matrix(int rows, int cols) {
+	double** matrix = malloc(rows * sizeof(double*));
+	for(int i = 0; i < rows; i++) {
+		matrix[i] = malloc(cols * sizeof(double));
 	}
 
-	for(int j = 0; j < matrix_size[0]; j++) {
-		for(int k = 0; k < matrix_size[1]; k++) {
+	for(int j = 0; j < rows; j++) {
+		for(int k = 0; k < cols; k++) {
 			printf("type coordinate (%d, %d): ", j+1, k+1);
 			scanf(" %lf", &matrix[j][k]);
 		}
@@ -40,9 +40,9 @@ double** fill_matrix(int* matrix_size) {
 	return matrix;
 }
 
-void print_matrix(double** matrix, int* matrix_size) {
-	for(int i = 0; i < matrix_size[0]; i++) {
-		for(int j = 0; j < matrix_size[1]; j++) {
+void print_matrix(double** matrix, int rows, int cols) {
+	for(int i = 0; i < rows; i++) {
+		for(int j = 0; j < cols; j++) {
 			printf("%lf\t", matrix[i][j]);
 		}
 		printf("\n");
