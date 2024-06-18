@@ -75,12 +75,12 @@ void operations_loop(double** matrix, int* matrix_size) {
 				matrix = substracted;
 				break;
 			case 'i':
-				if (matrix_size[0] == matrix_size[1]) {
+				if (matrix_size[0] == matrix_size[1] && determinant != 0) {
 					double** inverse_matrix = get_inverse(matrix, matrix_size[0], determinant);
 					free_matrix(matrix, matrix_size[0]);
 					matrix = inverse_matrix;
 				} else {
-					printf("matrix not square, can't calculate inverse\n");
+					printf("matrix is not square and non-singular\n");
 				}
 				break;
 			case 'r':
