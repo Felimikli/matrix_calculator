@@ -35,14 +35,15 @@ void operations_loop(double** matrix, int* matrix_size) {
 		printf("'Q' to exit\n");
 		scanf(" %c", &operation_input);
 		switch (tolower(operation_input)) {
-			case 'd':
+			case 'd': {
 				if(matrix_size[0] == matrix_size[1]) {
 					printf("determinant: %lf\n", determinant);
 				} else {
 					printf("matrix not square, can't calculate determinant\n");
 				}
 				break;
-			case 't':
+			}
+			case 't': {
 				double** transposed = transpose(matrix, matrix_size[0], matrix_size[1]);
 				free_matrix(matrix, matrix_size[0]);
 				matrix = transposed;
@@ -50,7 +51,8 @@ void operations_loop(double** matrix, int* matrix_size) {
 				matrix_size[0] = matrix_size[1];
 				matrix_size[1] = temp;
 				break;
-			case 'm':
+			}
+			case 'm': {
 				second_matrix_size = get_matrix_size(matrix_size[1]);
 				second_matrix = fill_matrix(second_matrix_size[0], second_matrix_size[1]);
 				double** multiplied = multiply(matrix, second_matrix, matrix_size[0], matrix_size[1], second_matrix_size[1]); 
@@ -60,21 +62,24 @@ void operations_loop(double** matrix, int* matrix_size) {
 				matrix_size[1] = second_matrix_size[1];
 				free(second_matrix_size);
 				break;
-			case 'a':
+			}
+			case 'a': {
 				second_matrix = fill_matrix(matrix_size[0],matrix_size[1]);
 				double** added = add(matrix, second_matrix, matrix_size); 
 				free_matrix(matrix, matrix_size[0]);
 				matrix = added;
 				free_matrix(second_matrix, matrix_size[0]);
 				break;
-			case 's':
+			}
+			case 's': {
 				second_matrix = fill_matrix(matrix_size[0],matrix_size[1]);
 				double** substracted = substract(matrix, second_matrix, matrix_size);
 				free_matrix(matrix, matrix_size[0]);
 				free_matrix(second_matrix, matrix_size[0]);
 				matrix = substracted;
 				break;
-			case 'i':
+			}
+			case 'i': {
 				if (matrix_size[0] == matrix_size[1] && determinant != 0) {
 					double** inverse_matrix = get_inverse(matrix, matrix_size[0], determinant);
 					free_matrix(matrix, matrix_size[0]);
@@ -83,19 +88,23 @@ void operations_loop(double** matrix, int* matrix_size) {
 					printf("matrix is not square and non-singular\n");
 				}
 				break;
-			case 'r':
+			}
+			case 'r': {
 				free_matrix(matrix, matrix_size[0]);
 				free(matrix_size);
 				matrix_size = get_matrix_size(0);
 				matrix = fill_matrix(matrix_size[0], matrix_size[1]);
 				break;
-			case 'q':
+			}
+			case 'q': {
 				free_matrix(matrix, matrix_size[0]);
 				free(matrix_size);
 				return;
-			default:
+			}
+			default: {
 				printf("invalid input\n");
 				break;
+			}
 		}
 		printf("\n");
 		print_matrix(matrix, matrix_size[0], matrix_size[1]);
