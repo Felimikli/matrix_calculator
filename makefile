@@ -9,11 +9,18 @@ TARGET = matrix_calc
 SRC_DIR = src
 OPS_DIR = src/operations
 
+# Define object directory
+OBJ_DIR = .obj
+
+# Ensure object directory exists
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
 # Find all source files in the defined directories
 SRC_FILES = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(OPS_DIR)/*.c)
 
 # Define object files
-OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJ_FILES = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 # Default target
 all: $(TARGET)
@@ -23,11 +30,11 @@ $(TARGET): $(OBJ_FILES)
 	$(CC) $(CFLAGS) -o $@ $^
 
 # Rule to build object files
-%.o: %.c
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean up build files
 clean:
-	rm -f $(OBJ_FILES) $(TARGET)
+	rm -rf $(OBJ_DIR) $(TARGET)
 
 .PHONY: all clean
