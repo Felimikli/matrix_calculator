@@ -8,6 +8,7 @@
 #include "../include/operations/multiply.h"
 #include "../include/operations/transpose.h"
 #include "../include/operations/inverse.h"
+#include "../include/operations/rank.h"
 
 
 void operations_loop(double** matrix, int* matrix_size) {
@@ -31,7 +32,8 @@ void operations_loop(double** matrix, int* matrix_size) {
 		printf("'M' to multiplicate matrices\n");
 		printf("'A' to add matrices\n");
 		printf("'S' to substract matrices\n");
-		printf("'R' to enter other matrix\n");
+		printf("'R' to calculate rank\n");
+		printf("'N' to enter other matrix\n");
 		printf("'Q' to exit\n");
 		scanf(" %c", &operation_input);
 		switch (tolower(operation_input)) {
@@ -85,11 +87,16 @@ void operations_loop(double** matrix, int* matrix_size) {
 					free_matrix(matrix, matrix_size[0]);
 					matrix = inverse_matrix;
 				} else {
-					printf("matrix is not square and non-singular\n");
+					printf("matrix is not square or not non-singular\n");
 				}
 				break;
 			}
 			case 'r': {
+				int rank = get_rank(matrix, matrix_size[0], matrix_size[1]);
+				printf("rank: %d", rank);
+				break;
+			}
+			case 'n': {
 				free_matrix(matrix, matrix_size[0]);
 				free(matrix_size);
 				matrix_size = get_matrix_size(0);
