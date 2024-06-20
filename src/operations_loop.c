@@ -93,7 +93,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 			}
 			case 'r': {
 				int rank = get_rank(matrix, matrix_size[0], matrix_size[1]);
-				printf("rank: %d", rank);
+				printf("rank: %d\n", rank);
 				break;
 			}
 			case 'n': {

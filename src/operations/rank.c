@@ -2,14 +2,13 @@
 #include "../../include/operations/rank.h"
 
 int get_rank(double** matrix, int rows, int cols) {
-
+	int rank = 0;
 	double** rank_matrix = allocate_matrix(rows, cols);
 	for(int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
 			rank_matrix[i][j] = matrix[i][j];
 		}
 	}
-	int rank = 0;
 	for(int j = 0; j < cols; j++) {
 		for(int i = (j+1); i < rows; i++) {
 			if(rank_matrix[i][j] != 0) {
