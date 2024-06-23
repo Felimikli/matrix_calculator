@@ -20,12 +20,16 @@ int get_rank(double** matrix, int rows, int cols) {
 			}
 		}
 	}
-	for(int l = rows-1; l >= 0; l--) {
-		double r = 0;
-		for(int h = 0; h < cols; h++) {
-			r += rank_matrix[l][h];
+	for(int l = 0; l < rows; l++) {
+		int h = 0;
+		while (h < cols) {
+			if(rank_matrix[l][h] != 0) {
+				break;
+			} else {
+				h++;
+			}
 		}
-		if(r != 0) {
+		if(h != cols) {
 			rank += 1;
 		}
 	}
