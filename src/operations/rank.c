@@ -11,7 +11,7 @@ int get_rank(double** matrix, int rows, int cols) {
 	}
 	for(int j = 0; j < cols; j++) {
 		for(int i = (j+1); i < rows; i++) {
-			if(rank_matrix[i][j] != 0) {
+			if(rank_matrix[i][j] != 0 && rank_matrix[j][j] != 0) {
 				double x = (-1) * rank_matrix[i][j] / rank_matrix[j][j];
 				for(int k = 0; k < cols; k++) {
 					rank_matrix[j][k] *= x;
