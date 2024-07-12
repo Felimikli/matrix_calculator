@@ -31,17 +31,12 @@ int get_rank(double** matrix, int rows, int cols) {
 			}
 		}
 	}
-	for(int l = 0; l < rank_rows; l++) {
-		int h = 0;
-		while (h < rank_cols) {
-			if(rank_matrix[l][h] != 0) {
+	for(int i = 0; i < rank_rows; i++) {
+		for(int j = 0; j < rank_cols; j++) {
+			if(rank_matrix[i][j] != 0) {
+				++rank;
 				break;
-			} else {
-				h++;
 			}
-		}
-		if(h != rank_cols) {
-			rank += 1;
 		}
 	}
 	free_matrix(rank_matrix, rank_rows);
