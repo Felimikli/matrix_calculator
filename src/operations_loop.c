@@ -101,6 +101,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 			case 'e': {
 				if (matrix_size[0] == matrix_size[1]) {
 					int exponent;
+					printf("type exponent: \n");
 					scanf(" %d", &exponent);
 					double** exp_matrix = exponentiate(matrix, matrix_size[0], exponent);
 					free_matrix(matrix, matrix_size[0]);
