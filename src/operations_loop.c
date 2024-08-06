@@ -9,6 +9,7 @@
 #include "../include/operations/transpose.h"
 #include "../include/operations/inverse.h"
 #include "../include/operations/rank.h"
+#include "../include/operations/exponentiate.h"
 
 
 void operations_loop(double** matrix, int* matrix_size) {
@@ -27,6 +28,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 			if(determinant != 0) {
 				printf("'I' to calculate the inverse matrix\n");
 			}
+			printf("'E' to exponentiate\n");
 		}
 		printf("'T' to transpose\n");
 		printf("'M' to multiplicate matrices\n");
@@ -94,6 +96,19 @@ void operations_loop(double** matrix, int* matrix_size) {
 			case 'r': {
 				int rank = get_rank(matrix, matrix_size[0], matrix_size[1]);
 				printf("rank: %d\n", rank);
+				break;
+			}
+			case 'e': {
+				if (matrix_size[0] == matrix_size[1] && determinant != 0) {
+					int exponent;
+					scanf(" %d", &exponent);
+					double** exp_matrix = exponentiate(matrix, matrix_size[0], exponent);
+					free_matrix(matrix, matrix_size[0]);
+					matrix = exp_matrix;
+				} else {
+					printf("matrix is not square\n");
+				}
+
 				break;
 			}
 			case 'n': {

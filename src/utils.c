@@ -44,7 +44,7 @@ void print_matrix(double** matrix, int rows, int cols) {
 	for(int i = 0; i < rows; i++) {
 		for(int j = 0; j < cols; j++) {
 			if(matrix[i][j] == -0.0) {matrix[i][j] = 0;}
-			printf("%lf\t", matrix[i][j]);
+			printf("%.2lf\t", matrix[i][j]);
 		}
 		printf("\n");
 	}
