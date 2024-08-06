@@ -10,7 +10,7 @@ double** exponentiate(double** matrix, int size, int exponent) {
 			result_matrix[i][j] = matrix[i][j];
 		}
 	}
-	for (int i = 0; i < exponent; i++) {
+	for (int i = 1; i < exponent; i++) {
 		result_matrix = multiply(matrix, result_matrix, size, size, size);
 	}
 	return result_matrix;
