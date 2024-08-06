@@ -99,7 +99,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 				break;
 			}
 			case 'e': {
-				if (matrix_size[0] == matrix_size[1] && determinant != 0) {
+				if (matrix_size[0] == matrix_size[1]) {
 					int exponent;
 					scanf(" %d", &exponent);
 					double** exp_matrix = exponentiate(matrix, matrix_size[0], exponent);
