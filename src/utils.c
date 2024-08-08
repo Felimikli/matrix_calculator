@@ -9,6 +9,15 @@ double** allocate_matrix(int rows, int cols) {
 	}
 	return matrix;
 }
+
+void copy_matrix(double** copy, double** matrix, int rows, int cols) {
+	for(int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			copy[i][j] = matrix[i][j];
+		}
+	}
+}
+
 int* get_matrix_size(int set_no_rows){
 	int* matrix_size = (int*)malloc(2 * sizeof(int)) ;
 	printf("Number of rows: ");
@@ -44,7 +53,7 @@ void print_matrix(double** matrix, int rows, int cols) {
 	for(int i = 0; i < rows; i++) {
 		for(int j = 0; j < cols; j++) {
 			if(matrix[i][j] == -0.0) {matrix[i][j] = 0;}
-			printf("%.2lf\t", matrix[i][j]);
+			printf("%.1lf\t", matrix[i][j]);
 		}
 		printf("\n");
 	}
