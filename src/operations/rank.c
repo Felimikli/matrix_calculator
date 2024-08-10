@@ -12,17 +12,12 @@ int get_rank(double** matrix, int rows, int cols) {
 		rank_rows = cols;
 		rank_cols = rows;
 	} else {
-		rank_matrix = allocate_matrix(rows, cols);
-		for(int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++) {
-				rank_matrix[i][j] = matrix[i][j];
-			}
-		}
-
+		rank_matrix = allocate_matrix(rank_rows, rank_cols);
+		copy_matrix(rank_matrix, matrix, rank_rows, rank_cols);
 	}
 	for(int j = 0; j < rank_cols; j++) {
 		for(int i = (j+1); i < rank_rows; i++) {
-			if(rank_matrix[i][j] != 0 && rank_matrix[j][j] != 0) {
+			if((rank_matrix[i][j] != 0) && (rank_matrix[j][j] != 0)) {
 				double x = (-1) * rank_matrix[i][j] / rank_matrix[j][j];
 				for(int k = 0; k < rank_cols; k++) {
 					rank_matrix[j][k] *= x;
