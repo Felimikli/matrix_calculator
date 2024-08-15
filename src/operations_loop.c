@@ -69,13 +69,17 @@ void operations_loop(double** matrix, int* matrix_size) {
 			}
 			case 'a': {
 				second_matrix = fill_matrix(matrix_size[0],matrix_size[1]);
-				matrix = add(matrix, second_matrix, matrix_size);
+				double** added_matrix = add(matrix, second_matrix, matrix_size);
+				copy_matrix(matrix, added_matrix, matrix_size[0], matrix_size[1]);
+				free_matrix(added_matrix, matrix_size[0]);
 				free_matrix(second_matrix, matrix_size[0]);
 				break;
 			}
 			case 's': {
 				second_matrix = fill_matrix(matrix_size[0],matrix_size[1]);
-				matrix = substract(matrix, second_matrix, matrix_size);
+				double** substracted_matrix = substract(matrix, second_matrix, matrix_size);
+				copy_matrix(matrix, substracted_matrix, matrix_size[0], matrix_size[1]);
+				free_matrix(substracted_matrix, matrix_size[0]);
 				free_matrix(second_matrix, matrix_size[0]);
 				break;
 			}
