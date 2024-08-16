@@ -26,7 +26,7 @@ int* get_matrix_size(int set_no_rows){
 	scanf("%d",&matrix_size[1]);
 
 	if(set_no_rows && set_no_rows != matrix_size[0]){
-		printf("invalid number of rows, it must be equal to numbre of rows of first matrix (%d)\n", set_no_rows);
+		printf("invalid number of rows, it must be equal to number of cols of first matrix (%d)\n", set_no_rows);
 		free(matrix_size);
 		return get_matrix_size(set_no_rows);
 	} else {
