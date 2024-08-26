@@ -52,7 +52,7 @@ double** fill_matrix(int rows, int cols) {
 void print_matrix(double** matrix, int rows, int cols) {
 	for(int i = 0; i < rows; i++) {
 		for(int j = 0; j < cols; j++) {
-			if(matrix[i][j] == -0.0) {matrix[i][j] = 0;}
+			if(matrix[i][j] == -0) {matrix[i][j] = 0;}
 			printf("%.1lf\t", matrix[i][j]);
 		}
 		printf("\n");
