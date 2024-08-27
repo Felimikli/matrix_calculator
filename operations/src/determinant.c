@@ -1,5 +1,5 @@
-#include "../../include/operations/determinant.h"
-#include "../../include/utils.h"
+#include "determinant.h"
+#include "utils.h"
 
 double get_determinant(int matrix_size, double** matrix){
 

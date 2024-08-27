@@ -1,6 +1,6 @@
-#include "../../include/operations/exponentiate.h"
-#include "../../include/operations/multiply.h"
-#include "../../include/utils.h"
+#include "exponentiate.h"
+#include "multiply.h"
+#include "utils.h"
 
 double** exponentiate(double** matrix, int size, int exponent) {
 

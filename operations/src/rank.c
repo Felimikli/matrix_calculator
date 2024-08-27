@@ -1,6 +1,6 @@
-#include "../../include/utils.h"
-#include "../../include/operations/rank.h"
-#include "../../include/operations/transpose.h"
+#include "utils.h"
+#include "rank.h"
+#include "transpose.h"
 
 int get_rank(double** matrix, int rows, int cols) {
 	int rank = 0;

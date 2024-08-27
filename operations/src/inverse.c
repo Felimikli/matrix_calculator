@@ -1,7 +1,7 @@
-#include "../../include/utils.h"
-#include "../../include/operations/inverse.h"
-#include "../../include/operations/determinant.h"
-#include "../../include/operations/transpose.h"
+#include "utils.h"
+#include "inverse.h"
+#include "determinant.h"
+#include "transpose.h"
 
 
 double** get_inverse(double** matrix, int matrix_size, double determinant) {

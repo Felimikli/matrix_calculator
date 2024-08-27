@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/utils.h"
+#include "utils.h"
 
 double** allocate_matrix(int rows, int cols) {
 	double** matrix = calloc(rows, sizeof(double*));

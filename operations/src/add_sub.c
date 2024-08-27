@@ -1,5 +1,5 @@
-#include "../../include/operations/add_sub.h"
-#include "../../include/utils.h"
+#include "add_sub.h"
+#include "utils.h"
 
 double** add(double** first_matrix, double** second_matrix, int* matrix_size) {
 

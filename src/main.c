@@ -1,5 +1,5 @@
-#include "../include/operations_loop.h"
-#include "../include/utils.h"
+#include "operations_loop.h"
+#include "utils.h"
 
 int main() {
 

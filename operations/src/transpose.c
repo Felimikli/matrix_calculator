@@ -1,5 +1,5 @@
-#include "../../include/operations/transpose.h"
-#include "../../include/utils.h"
+#include "transpose.h"
+#include "utils.h"
 
 double** transpose(double** matrix, int rows, int cols) {
 	double** transposed_matrix = allocate_matrix(cols, rows);

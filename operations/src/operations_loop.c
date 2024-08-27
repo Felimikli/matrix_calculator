@@ -1,15 +1,15 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/operations_loop.h"
-#include "../include/utils.h"
-#include "../include/operations/determinant.h"
-#include "../include/operations/add_sub.h"
-#include "../include/operations/multiply.h"
-#include "../include/operations/transpose.h"
-#include "../include/operations/inverse.h"
-#include "../include/operations/rank.h"
-#include "../include/operations/exponentiate.h"
+#include "operations_loop.h"
+#include "utils.h"
+#include "determinant.h"
+#include "add_sub.h"
+#include "multiply.h"
+#include "transpose.h"
+#include "inverse.h"
+#include "rank.h"
+#include "exponentiate.h"
 
 
 void operations_loop(double** matrix, int* matrix_size) {
