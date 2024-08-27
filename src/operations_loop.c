@@ -109,7 +109,6 @@ void operations_loop(double** matrix, int* matrix_size) {
 				} else {
 					printf("matrix is not square\n");
 				}
-
 				break;
 			}
 			case 'n': {
