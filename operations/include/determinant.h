@@ -1,1 +1,1 @@
-double get_determinant(int matrix_size, double** matrix);
+double get_determinant(double** matrix, int rows, int cols);

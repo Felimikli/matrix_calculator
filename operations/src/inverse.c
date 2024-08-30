@@ -37,7 +37,7 @@ double** get_inverse(double** matrix, int matrix_size, double determinant) {
 						}
 					}
 					sign = ((i+j) % 2 == 0) ? 1 : -1;
-					result_matrix[i][j] = inv_det * sign * get_determinant(minor_size, minor);
+					result_matrix[i][j] = inv_det * sign * get_determinant(minor, minor_size, minor_size);
 					free_matrix(minor, minor_size);
 				}
 			}

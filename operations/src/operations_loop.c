@@ -1,15 +1,16 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "operations_loop.h"
-#include "utils.h"
-#include "determinant.h"
-#include "add_sub.h"
-#include "multiply.h"
-#include "transpose.h"
-#include "inverse.h"
-#include "rank.h"
-#include "exponentiate.h"
+#include "../include/operations_loop.h"
+#include "../include/utils.h"
+#include "../include/determinant.h"
+#include "../include/add_sub.h"
+#include "../include/multiply.h"
+#include "../include/transpose.h"
+#include "../include/inverse.h"
+#include "../include/rank.h"
+#include "../include/exponentiate.h"
+#include "../include/gauss.h"
 
 
 void operations_loop(double** matrix, int* matrix_size) {
@@ -24,7 +25,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 		printf("Press:\n");
 		if(matrix_size[0] == matrix_size[1]) {
 			printf("'D' to calculate determinant\n");
-			determinant = get_determinant(matrix_size[0], matrix);
+			determinant = get_determinant(matrix, matrix_size[0], matrix_size[1]);
 			if(determinant != 0) {
 				printf("'I' to calculate the inverse matrix\n");
 			}
@@ -35,6 +36,7 @@ void operations_loop(double** matrix, int* matrix_size) {
 		printf("'A' to add matrices\n");
 		printf("'S' to substract matrices\n");
 		printf("'R' to calculate rank\n");
+		printf("'G' for Gaussian elimination\n");
 		printf("'N' to enter other matrix\n");
 		printf("'Q' to exit\n");
 		scanf(" %c", &operation_input);
@@ -109,6 +111,12 @@ void operations_loop(double** matrix, int* matrix_size) {
 				} else {
 					printf("matrix is not square\n");
 				}
+				break;
+			}
+			case 'g': {
+				double** gauss_matrix = gauss(matrix, matrix_size[0], matrix_size[1]);
+				free_matrix(matrix, matrix_size[0]);
+				matrix = gauss_matrix;
 				break;
 			}
 			case 'n': {

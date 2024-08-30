@@ -66,3 +66,12 @@ void free_matrix(double** matrix, int rows) {
 	}
 	free(matrix);
 }
+
+void exchange_matrix_rows(double** matrix, int no_cols, int row1, int row2) {
+	double temp;
+	for(int j = 0; j < no_cols; j++) {
+		temp = matrix[row1][j];
+		matrix[row1][j] = matrix[row2][j];
+		matrix[row2][j] = temp;
+	}
+}
