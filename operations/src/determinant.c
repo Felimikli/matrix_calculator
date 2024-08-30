@@ -43,7 +43,7 @@ double get_determinant(double** matrix, int rows, int cols){
 	double det = 1.0;
 	double** det_matrix;
 	det_matrix = gauss(matrix, rows, cols);
-	for(int i = 0; i < cols; i++) {
+	for(int i = 0; i < cols && i < rows; i++) {
 		det *= det_matrix[i][i];
 	}
 	free_matrix(det_matrix, rows);
