@@ -6,7 +6,7 @@ int get_rank(double** matrix, int rows, int cols) {
 	int rank = 0;
 	double** rank_matrix;
 	rank_matrix = gauss(matrix, rows, cols);
-	for(int i = 0; i < cols; i++) {
+	for(int i = 0; i < cols && i < rows; i++) {
 		if(rank_matrix[i][i] != 0) {
 			rank++;
 		}
