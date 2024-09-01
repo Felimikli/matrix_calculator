@@ -1,1 +1,2 @@
-void operations_loop(double** matrix, int* matrix_size);
+#include "common_structs.h"
+void operations_loop(Matrix* matrix);

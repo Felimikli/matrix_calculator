@@ -1,12 +1,15 @@
 #include "operations_loop.h"
 #include "utils.h"
 
+
 int main() {
 
-	int* matrix_size = get_matrix_size(0);
-	double** matrix = fill_matrix(matrix_size[0], matrix_size[1]);
+	Matrix matrix;
+	matrix.rows = get_matrix_rows(0);
+	matrix.cols = get_matrix_cols();
+	matrix.data = fill_matrix(matrix.rows, matrix.cols);
 
-	operations_loop(matrix, matrix_size);
+	operations_loop(&matrix);
 	
 	return 0;
 }

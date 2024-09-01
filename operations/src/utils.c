@@ -18,20 +18,24 @@ void copy_matrix(double** copy, double** matrix, int rows, int cols) {
 	}
 }
 
-int* get_matrix_size(int set_no_rows){
-	int* matrix_size = (int*)malloc(2 * sizeof(int)) ;
-	printf("Number of rows: ");
-	scanf("%d",&matrix_size[0]);
-	printf("Number of columns: ");
-	scanf("%d",&matrix_size[1]);
 
-	if(set_no_rows && set_no_rows != matrix_size[0]){
-		printf("invalid number of rows, it must be equal to number of cols of first matrix (%d)\n", set_no_rows);
-		free(matrix_size);
-		return get_matrix_size(set_no_rows);
+int get_matrix_rows(int mult_cols) {
+	int rows;
+	printf("Number of rows: ");
+	scanf("%d",&rows);
+	// just for multiplication operation
+	if(mult_cols && mult_cols != rows){
+		printf("invalid number of rows, it must be equal to number of cols of first matrix (%d)\n", mult_cols);
+		return get_matrix_rows(mult_cols);
 	} else {
-		return matrix_size;
+		return rows;
 	}
+}
+int get_matrix_cols() {
+	int cols;
+	printf("Number of rows: ");
+	scanf("%d",&cols);
+	return cols;
 }
 
 double** fill_matrix(int rows, int cols) {
