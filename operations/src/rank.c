@@ -1,16 +1,15 @@
 #include "utils.h"
 #include "rank.h"
-#include "gauss.h"
+#include "gauss_elimination.h"
 
-int get_rank(double** matrix, int rows, int cols) {
+int get_rank(Matrix* matrix) {
 	int rank = 0;
-	double** rank_matrix;
-	rank_matrix = gauss(matrix, rows, cols);
-	for(int i = 0; i < cols && i < rows; i++) {
-		if(rank_matrix[i][i] != 0) {
+	Matrix* rank_matrix = gauss_elimination(matrix);
+	for(int i = 0; i < matrix->cols && i < matrix->rows; i++) {
+		if(rank_matrix->data[i][i] != 0) {
 			rank++;
 		}
 	}
-	free_matrix(rank_matrix, rows);
+	free_matrix(rank_matrix);
 	return rank;
 }

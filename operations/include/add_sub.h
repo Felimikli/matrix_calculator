@@ -1,2 +1,6 @@
-double** add(double** first_matrix, double** second_matrix, int rows, int cols);
-double** substract(double** first_matrix, double** second_matrix, int rows, int cols);
+#pragma once
+
+#include "utils.h"
+
+Matrix* add(Matrix* matrix1, Matrix* matrix2);
+Matrix* substract(Matrix* matrix1, Matrix* matrix2);

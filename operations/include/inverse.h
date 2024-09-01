@@ -1,1 +1,5 @@
-double** get_inverse(double** first_matrix, int matrix_size, double determinant);
+#pragma once
+
+#include "utils.h"
+
+Matrix* get_inverse(Matrix* matrix);

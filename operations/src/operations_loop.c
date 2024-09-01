@@ -1,6 +1,5 @@
 #include <ctype.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "operations_loop.h"
 #include "utils.h"
 #include "determinant.h"
@@ -10,23 +9,20 @@
 #include "inverse.h"
 #include "rank.h"
 #include "exponentiate.h"
-#include "gauss.h"
+#include "gauss_elimination.h"
 
 
 void operations_loop(Matrix* matrix) {
-	int second_matrix_rows;
-	int second_matrix_cols;
-	double** second_matrix;
 	double determinant;
 
 	char operation_input;
 	printf("Your matrix:\n");
-	print_matrix(matrix->data, matrix->rows, matrix->cols);
+	print_matrix(matrix);
 	while(1) {
 		printf("Press:\n");
 		if(matrix->rows == matrix->cols) {
 			printf("'D' to calculate determinant\n");
-			determinant = get_determinant(matrix->data, matrix->rows, matrix->cols);
+			determinant = get_determinant(matrix);
 			if(determinant != 0) {
 				printf("'I' to calculate the inverse matrix\n");
 			}
@@ -51,53 +47,55 @@ void operations_loop(Matrix* matrix) {
 				break;
 			}
 			case 't': {
-				double** transposed = transpose(matrix->data, matrix->rows, matrix->cols);
-				free_matrix(matrix->data, matrix->rows);
-				matrix->data = transposed;
-				int temp = matrix->rows;
-				matrix->rows = matrix->cols;
-				matrix->cols = temp;
+				
+				Matrix* result_matrix = transpose(matrix);
+				matrix = replace_matrix(matrix, result_matrix);
+
 				break;
 			}
 			case 'm': {
-				second_matrix_rows = get_matrix_rows(matrix->cols);
-				second_matrix_cols = get_matrix_cols();
-				second_matrix = fill_matrix(second_matrix_rows, second_matrix_cols);
-				double** multiplied = multiply(matrix->data, second_matrix, matrix->rows, matrix->cols, second_matrix_cols); 
-				free_matrix(matrix->data, matrix->rows);
-				matrix->data = multiplied;
-				free_matrix(second_matrix, second_matrix_rows);
-				matrix->cols = second_matrix_cols;
+				int second_matrix_rows = get_matrix_rows(matrix->cols);
+				int second_matrix_cols = get_matrix_cols();
+				Matrix* second_matrix = create_matrix(second_matrix_rows, second_matrix_cols);
+				fill_matrix(second_matrix);
+
+				Matrix* result_matrix = multiply(matrix, second_matrix);
+				matrix = replace_matrix(matrix, result_matrix);
+
+				free_matrix(second_matrix);
 				break;
 			}
 			case 'a': {
-				second_matrix = fill_matrix(matrix->rows,matrix->cols);
-				double** added_matrix = add(matrix->data, second_matrix, matrix->rows, matrix->cols);
-				copy_matrix(matrix->data, added_matrix, matrix->rows, matrix->cols);
-				free_matrix(added_matrix, matrix->rows);
-				free_matrix(second_matrix, matrix->rows);
+				Matrix* second_matrix = create_matrix(matrix->rows, matrix->cols);
+				fill_matrix(second_matrix);
+
+				Matrix* result_matrix = add(matrix, second_matrix);
+				matrix = replace_matrix(matrix, result_matrix);
+
+				free_matrix(second_matrix);
 				break;
 			}
 			case 's': {
-				second_matrix = fill_matrix(matrix->rows,matrix->cols);
-				double** substracted_matrix = substract(matrix->data, second_matrix, matrix->rows, matrix->cols);
-				copy_matrix(matrix->data, substracted_matrix, matrix->rows, matrix->cols);
-				free_matrix(substracted_matrix, matrix->rows);
-				free_matrix(second_matrix, matrix->rows);
+				Matrix* second_matrix = create_matrix(matrix->rows, matrix->cols);
+				fill_matrix(second_matrix);
+
+				Matrix* result_matrix = substract(matrix, second_matrix);
+				matrix = replace_matrix(matrix, result_matrix);
+
+				free_matrix(second_matrix);
 				break;
 			}
 			case 'i': {
 				if (matrix->rows == matrix->cols && determinant != 0) {
-					double** inverse_matrix = get_inverse(matrix->data, matrix->rows, determinant);
-					free_matrix(matrix->data, matrix->rows);
-					matrix->data = inverse_matrix;
+					Matrix* result_matrix = get_inverse(matrix);
+					matrix = replace_matrix(matrix, result_matrix);
 				} else {
 					printf("matrix is not square or not non-singular\n");
 				}
 				break;
 			}
 			case 'r': {
-				int rank = get_rank(matrix->data, matrix->rows, matrix->cols);
+				int rank = get_rank(matrix);
 				printf("rank: %d\n", rank);
 				break;
 			}
@@ -106,37 +104,34 @@ void operations_loop(Matrix* matrix) {
 					int exponent;
 					printf("type exponent: \n");
 					scanf(" %d", &exponent);
-					double** exp_matrix = exponentiate(matrix->data, matrix->rows, exponent);
-					free_matrix(matrix->data, matrix->rows);
-					matrix->data = exp_matrix;
+
+					Matrix* result_matrix = exponentiate(matrix, exponent);
+					matrix = replace_matrix(matrix, result_matrix);
 				} else {
 					printf("matrix is not square\n");
 				}
 				break;
 			}
 			case 'g': {
-				double** gauss_matrix = gauss(matrix->data, matrix->rows, matrix->cols);
-				free_matrix(matrix->data, matrix->rows);
-				matrix->data = gauss_matrix;
+				Matrix* result_matrix = gauss_elimination(matrix);
+				matrix = replace_matrix(matrix, result_matrix);
 				break;
 			}
 			case 'n': {
-				free_matrix(matrix->data, matrix->rows);
-				// matrix_size = get_matrix_size(0);
-				matrix->data = fill_matrix(matrix->rows, matrix->cols);
+				fill_matrix(matrix);
 				break;
 			}
 			case 'q': {
-				free_matrix(matrix->data, matrix->rows);
+				free_matrix(matrix);
 				return;
 			}
 			default: {
-				printf("invalid input\n");
-				break;
+				// printf("invalid input\n");
+				// break;
 			}
 		}
 		printf("\n");
-		print_matrix(matrix->data, matrix->rows, matrix->cols);
+		print_matrix(matrix);
 	}
-	free_matrix(matrix->data, matrix->rows);
+	free_matrix(matrix);
 }

@@ -1,1 +1,5 @@
-int get_rank(double** matrix, int rows, int cols);
+#pragma once
+
+#include "utils.h"
+
+int get_rank(Matrix* matrix);

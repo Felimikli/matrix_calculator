@@ -2,27 +2,28 @@
 #include "multiply.h"
 #include "utils.h"
 
-double** exponentiate(double** matrix, int size, int exponent) {
+Matrix* exponentiate(Matrix* matrix, int exponent) {
 
-	double** result_matrix = allocate_matrix(size, size);
+	int size = matrix->rows;
+
+	Matrix* result_matrix = create_matrix(size, size);
+
 	switch (exponent) {
 		case 0:
 			for(int i = 0; i < size; i++) {
-				result_matrix[i][i] = 1;
+				result_matrix->data[i][i] = 1;
 			}
+			break;
 		case 1:
-			copy_matrix(result_matrix, matrix, size, size);
+			result_matrix = copy_matrix(matrix);
+			break;
 		default:
-			copy_matrix(result_matrix, matrix, size, size);
+			result_matrix = copy_matrix(matrix);
 			for (int i = 1; i < exponent; i++) {
-
-				double** temp_matrix = multiply(result_matrix, matrix, size, size, size);
-
-				copy_matrix(result_matrix, temp_matrix, size, size);
-
-				free_matrix(temp_matrix, size);
-
+				Matrix* temp_matrix = multiply(result_matrix, matrix);
+				result_matrix = replace_matrix(result_matrix, temp_matrix);
 			}
+			break;
 	}
 	return result_matrix;
 }

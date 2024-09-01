@@ -4,12 +4,12 @@
 
 int main() {
 
-	Matrix matrix;
-	matrix.rows = get_matrix_rows(0);
-	matrix.cols = get_matrix_cols();
-	matrix.data = fill_matrix(matrix.rows, matrix.cols);
+	int rows = get_matrix_rows(0);
+	int cols = get_matrix_cols();
+	Matrix* matrix = create_matrix(rows, cols);
+	fill_matrix(matrix);
 
-	operations_loop(&matrix);
+	operations_loop(matrix);
 	
 	return 0;
 }

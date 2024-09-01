@@ -1,1 +1,5 @@
-double** exponentiate(double** matrix, int size, int exponent);
+#pragma once
+
+#include "utils.h"
+
+Matrix* exponentiate(Matrix* matrix, int exponent);

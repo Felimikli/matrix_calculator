@@ -1,25 +1,24 @@
 #include "add_sub.h"
-#include "utils.h"
 
-double** add(double** first_matrix, double** second_matrix, int rows, int cols) {
+Matrix* add(Matrix* matrix1, Matrix* matrix2) {
 
-	double** result_matrix = allocate_matrix(rows, cols);
+	Matrix* result_matrix = create_matrix(matrix1->rows, matrix1->rows);
 
-	for(int m = 0; m < rows; m++) {
-		for(int p = 0; p < cols; p++) {
-				result_matrix[m][p] = first_matrix[m][p] + second_matrix[m][p];
+	for(int i = 0; i < result_matrix->rows; i++) {
+		for(int j = 0; j < result_matrix->cols; j++) {
+				result_matrix->data[i][j] = matrix1->data[i][j] + matrix2->data[i][j];
 			}
 		}
 	return result_matrix;
 }
 
-double** substract(double** first_matrix, double** second_matrix, int rows, int cols) {
+Matrix* substract(Matrix* matrix1, Matrix* matrix2) {
 
-	double** result_matrix = allocate_matrix(rows, cols);
+	Matrix* result_matrix = create_matrix(matrix1->rows, matrix1->rows);
 
-	for(int m = 0; m < rows; m++) {
-		for(int p = 0; p < cols; p++) {
-				result_matrix[m][p] = first_matrix[m][p] - second_matrix[m][p];
+	for(int i = 0; i < result_matrix->rows; i++) {
+		for(int j = 0; j < result_matrix->cols; j++) {
+				result_matrix->data[i][j] = matrix1->data[i][j] - matrix2->data[i][j];
 			}
 		}
 	return result_matrix;

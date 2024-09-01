@@ -1,1 +1,5 @@
-double** transpose(double** matrix, int rows, int cols);
+#pragma once
+
+#include "utils.h"
+
+Matrix* transpose(Matrix* matrix);

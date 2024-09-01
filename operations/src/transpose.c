@@ -1,11 +1,11 @@
 #include "transpose.h"
 #include "utils.h"
 
-double** transpose(double** matrix, int rows, int cols) {
-	double** transposed_matrix = allocate_matrix(cols, rows);
-	for(int j = 0; j < cols; j++) {
-		for(int k = 0; k < rows; k++) {
-			transposed_matrix[j][k] = matrix[k][j];
+Matrix* transpose(Matrix* matrix) {
+	Matrix* transposed_matrix = create_matrix(matrix->cols, matrix->rows);
+	for(int i = 0; i < matrix->rows; i++) {
+		for(int j = 0; j < matrix->cols; j++) {
+			transposed_matrix->data[j][i] = matrix->data[i][j];
 		}
 	}
 	return transposed_matrix;

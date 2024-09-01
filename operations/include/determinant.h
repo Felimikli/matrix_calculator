@@ -1,1 +1,5 @@
-double get_determinant(double** matrix, int rows, int cols);
+#pragma once
+
+#include "utils.h"
+
+double get_determinant(Matrix* matrix);
