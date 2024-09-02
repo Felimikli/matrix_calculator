@@ -28,7 +28,6 @@ Matrix* gauss_elimination(Matrix* matrix) {
 	return result_matrix;
 }
 
-
 Gauss_elimination_result gauss_elimination_row_exchanges(Matrix* matrix) {
 	
 	double x;

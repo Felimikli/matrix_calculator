@@ -1,6 +1,6 @@
 #include "add_sub.h"
 
-Matrix* add(Matrix* matrix1, Matrix* matrix2) {
+Matrix* add_matrices(Matrix* matrix1, Matrix* matrix2) {
 
 	Matrix* result_matrix = create_matrix(matrix1->rows, matrix1->rows);
 
@@ -12,7 +12,7 @@ Matrix* add(Matrix* matrix1, Matrix* matrix2) {
 	return result_matrix;
 }
 
-Matrix* substract(Matrix* matrix1, Matrix* matrix2) {
+Matrix* substract_matrices(Matrix* matrix1, Matrix* matrix2) {
 
 	Matrix* result_matrix = create_matrix(matrix1->rows, matrix1->rows);
 

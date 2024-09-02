@@ -2,4 +2,4 @@
 
 #include "utils.h"
 
-Matrix* get_inverse(Matrix* matrix);
+Matrix* inverse(Matrix* matrix);

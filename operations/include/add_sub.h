@@ -2,5 +2,5 @@
 
 #include "utils.h"
 
-Matrix* add(Matrix* matrix1, Matrix* matrix2);
-Matrix* substract(Matrix* matrix1, Matrix* matrix2);
+Matrix* add_matrices(Matrix* matrix1, Matrix* matrix2);
+Matrix* substract_matrices(Matrix* matrix1, Matrix* matrix2);

@@ -4,11 +4,11 @@
 #include "utils.h"
 #include "determinant.h"
 #include "add_sub.h"
-#include "multiply.h"
+#include "multiply_matrices.h"
 #include "transpose.h"
 #include "inverse.h"
 #include "rank.h"
-#include "exponentiate.h"
+#include "matrix_power.h"
 #include "gauss_elimination.h"
 
 
@@ -59,7 +59,7 @@ void operations_loop(Matrix* matrix) {
 				Matrix* second_matrix = create_matrix(second_matrix_rows, second_matrix_cols);
 				fill_matrix(second_matrix);
 
-				Matrix* result_matrix = multiply(matrix, second_matrix);
+				Matrix* result_matrix = multiply_matrices(matrix, second_matrix);
 				matrix = replace_matrix(matrix, result_matrix);
 
 				free_matrix(second_matrix);
@@ -69,7 +69,7 @@ void operations_loop(Matrix* matrix) {
 				Matrix* second_matrix = create_matrix(matrix->rows, matrix->cols);
 				fill_matrix(second_matrix);
 
-				Matrix* result_matrix = add(matrix, second_matrix);
+				Matrix* result_matrix = add_matrices(matrix, second_matrix);
 				matrix = replace_matrix(matrix, result_matrix);
 
 				free_matrix(second_matrix);
@@ -79,7 +79,7 @@ void operations_loop(Matrix* matrix) {
 				Matrix* second_matrix = create_matrix(matrix->rows, matrix->cols);
 				fill_matrix(second_matrix);
 
-				Matrix* result_matrix = substract(matrix, second_matrix);
+				Matrix* result_matrix = substract_matrices(matrix, second_matrix);
 				matrix = replace_matrix(matrix, result_matrix);
 
 				free_matrix(second_matrix);
@@ -87,7 +87,7 @@ void operations_loop(Matrix* matrix) {
 			}
 			case 'i': {
 				if (matrix->rows == matrix->cols && determinant != 0) {
-					Matrix* result_matrix = get_inverse(matrix);
+					Matrix* result_matrix = inverse(matrix);
 					matrix = replace_matrix(matrix, result_matrix);
 				} else {
 					printf("matrix is not square or not non-singular\n");
@@ -105,7 +105,7 @@ void operations_loop(Matrix* matrix) {
 					printf("type exponent: \n");
 					scanf(" %d", &exponent);
 
-					Matrix* result_matrix = exponentiate(matrix, exponent);
+					Matrix* result_matrix = matrix_power(matrix, exponent);
 					matrix = replace_matrix(matrix, result_matrix);
 				} else {
 					printf("matrix is not square\n");

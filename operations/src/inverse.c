@@ -1,7 +1,7 @@
 #include "inverse.h"
 #include "determinant.h"
 
-Matrix* get_inverse(Matrix* matrix) {
+Matrix* inverse(Matrix* matrix) {
 	int sign;
 	int size = matrix->rows;
 	Matrix* result_matrix = copy_matrix(matrix);

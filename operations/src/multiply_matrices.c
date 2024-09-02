@@ -1,7 +1,7 @@
-#include "multiply.h"
+#include "multiply_matrices.h"
 #include "utils.h"
 
-Matrix* multiply(Matrix* matrix1, Matrix* matrix2) {
+Matrix* multiply_matrices(Matrix* matrix1, Matrix* matrix2) {
 
 	int middle_cols_rows = matrix1->cols; // = matrix2->rows
 
