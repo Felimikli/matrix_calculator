@@ -1,6 +1,6 @@
 
 # Define the source files for UI
-file(GLOB_RECURSE UI_SRC_FILES "src/*.cpp")
+file(GLOB_RECURSE UI_SRC_FILES "src/*.c")
 
 # Create a static library for UI
 add_library(ui STATIC ${UI_SRC_FILES})

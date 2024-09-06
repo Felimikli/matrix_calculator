@@ -1,4 +1,4 @@
-#include "add_sub.h"
+#include "funcs.h"
 
 Matrix* add_matrices(Matrix* matrix1, Matrix* matrix2) {
 

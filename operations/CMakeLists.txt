@@ -1,4 +1,3 @@
-
 # Define the source files for operations
 file(GLOB_RECURSE OPS_SRC_FILES "src/*.c")
 

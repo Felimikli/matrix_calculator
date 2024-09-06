@@ -11,3 +11,4 @@ Matrix* copy_matrix(Matrix* matrix);
 void print_matrix(Matrix* matrix);
 void free_matrix(Matrix* matrix);
 void exchange_matrix_rows(Matrix* matrix, int row1, int row2);
+Node* create_node(Operation_type op, Matrix* matrix1, Matrix* matrix2, int exp, Node* prev_node, Node* next_node);

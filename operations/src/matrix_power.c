@@ -1,6 +1,4 @@
-#include "matrix_power.h"
-#include "multiply_matrices.h"
-#include "utils.h"
+#include "funcs.h"
 
 Matrix* matrix_power(Matrix* matrix, int exponent) {
 

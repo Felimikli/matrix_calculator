@@ -1,6 +1,4 @@
-#include "utils.h"
-#include "rank.h"
-#include "gauss_elimination.h"
+#include "funcs.h"
 
 int get_rank(Matrix* matrix) {
 	int rank = 0;

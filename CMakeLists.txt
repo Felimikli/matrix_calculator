@@ -21,6 +21,7 @@ add_subdirectory(ui)
 # Add the executable target
 add_executable(matrix_calc
     src/main.c
+    src/utils.c
 )
 
 # Link libraries

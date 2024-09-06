@@ -1,6 +1,6 @@
+#include "../include/utils.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils.h"
 
 int get_matrix_rows(int mult_cols) {
 	int rows;
@@ -124,4 +124,18 @@ void exchange_matrix_rows(Matrix* matrix, int row1, int row2) {
 		matrix->data[row1][j] = matrix->data[row2][j];
 		matrix->data[row2][j] = temp;
 	}
+}
+
+
+Node* create_node(Operation_type op, Matrix* matrix1, Matrix* matrix2, int exp, Node* prev_node, Node* next_node) {
+	Node* new_node = malloc(sizeof(Node));
+
+	new_node->op_type = op;
+	new_node->m1 = matrix1;
+	new_node->m2 = matrix2;
+	new_node->exponent = exp;
+	new_node->prev = prev_node;
+	new_node->next = new_node;
+
+	return new_node;
 }

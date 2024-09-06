@@ -1,6 +1,4 @@
-#include "determinant.h"
-#include "gauss_elimination.h"
-#include "utils.h"
+#include "funcs.h"
 
 double get_determinant(Matrix* matrix){
 

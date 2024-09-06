@@ -1,4 +1,4 @@
-#include "gauss_elimination.h"
+#include "funcs.h"
 #include <math.h>
 
 Matrix* gauss_elimination(Matrix* matrix) {

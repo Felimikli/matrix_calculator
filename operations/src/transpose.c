@@ -1,5 +1,4 @@
-#include "transpose.h"
-#include "utils.h"
+#include "funcs.h"
 
 Matrix* transpose(Matrix* matrix) {
 	Matrix* transposed_matrix = create_matrix(matrix->cols, matrix->rows);

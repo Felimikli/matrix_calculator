@@ -1,5 +1,4 @@
-#include "inverse.h"
-#include "determinant.h"
+#include "funcs.h"
 
 Matrix* inverse(Matrix* matrix) {
 	int sign;

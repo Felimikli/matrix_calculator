@@ -2,4 +2,4 @@
 
 #include "utils.h"
 
-void operations_loop(Matrix* matrix);
+Result* operations_loop(Node* prev);

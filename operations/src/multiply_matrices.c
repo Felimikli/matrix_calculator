@@ -1,5 +1,4 @@
-#include "multiply_matrices.h"
-#include "utils.h"
+#include "funcs.h"
 
 Matrix* multiply_matrices(Matrix* matrix1, Matrix* matrix2) {
 
