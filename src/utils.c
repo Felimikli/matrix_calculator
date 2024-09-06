@@ -140,4 +140,8 @@ Node* create_node(Operation_type op, Matrix* matrix1, Matrix* matrix2, int exp, 
 	return new_node;
 }
 
-
+void append_end(List* list, Node* new_node) {
+	list->tail->next = new_node;
+	new_node->prev = list->tail;
+	list->tail = new_node;
+}
