@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "common_structs.h"
 #include "operations_loop.h"
 #include "utils.h"
 
@@ -10,6 +9,8 @@ int main() {
 	int cols = get_matrix_cols();
 	Matrix* matrix = create_matrix(rows, cols);
 	fill_matrix(matrix);
+
+	List* list;
 
 	Node* head = create_node(OPERATION_BLANK, matrix, NULL, 1, NULL, NULL);
 

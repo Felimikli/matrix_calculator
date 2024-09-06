@@ -36,6 +36,11 @@ typedef struct Node {
 	struct Node* next;
 } Node;
 
+typedef struct List {
+	Node* head;
+	Node* tail;
+} List;
+
 typedef struct Result {
 	Matrix* result_matrix;
 	double determinant;

@@ -139,3 +139,5 @@ Node* create_node(Operation_type op, Matrix* matrix1, Matrix* matrix2, int exp, 
 
 	return new_node;
 }
+
+
