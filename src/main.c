@@ -1,4 +1,3 @@
-#include <math.h>
 #include <stdio.h>
 #include "common_structs.h"
 #include "operations_loop.h"
@@ -13,6 +12,7 @@ int main() {
 	fill_matrix(matrix);
 
 	Node* head = create_node(OPERATION_BLANK, matrix, NULL, 1, NULL, NULL);
+
 	Result* res;
 
 	char operation_input;

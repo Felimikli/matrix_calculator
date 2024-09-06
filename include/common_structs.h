@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdbool.h>
+
 typedef struct Matrix {
 	int rows;
 	int cols;
@@ -38,4 +40,6 @@ typedef struct Result {
 	Matrix* result_matrix;
 	double determinant;
 	int rank;
+	bool has_determinant;
+	bool has_rank;
 } Result;

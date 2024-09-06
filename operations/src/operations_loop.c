@@ -1,5 +1,4 @@
 #include <math.h>
-#include <ctype.h>
 #include <stdio.h>
 #include "operations_loop.h"
 #include "common_structs.h"
@@ -7,13 +6,13 @@
 
 
 Result* operations_loop(Node* prev) {
-	double determinant;
-
 
 	Result* result;
 	result->result_matrix = NULL;
-	result->determinant = NAN;
-	result->rank = NAN;
+	result->determinant = 0;
+	result->rank = 0;
+	result->has_determinant = false;
+	result->has_rank = false;
 
 	switch (prev->op_type) {
 		case OPERATION_BLANK: {
@@ -37,7 +36,7 @@ Result* operations_loop(Node* prev) {
 			break;
 		}
 		case OPERATION_INVERSE: {
-			if (prev->m1->rows == prev->m1->cols && determinant != 0) {
+			if (prev->m1->rows == prev->m1->cols && get_determinant(prev->m1) != 0) {
 				result->result_matrix = inverse(prev->m1);
 			} else {
 				printf("matrix is not square or not non-singular\n");
@@ -56,6 +55,7 @@ Result* operations_loop(Node* prev) {
 		case OPERATION_DETERMINANT: {
 			if(prev->m1->rows == prev->m1->cols) {
 				result->determinant = get_determinant(prev->m1);
+				result->has_determinant = true;
 			} else {
 				printf("matrix not square, can't calculate determinant\n");
 			}
@@ -63,6 +63,7 @@ Result* operations_loop(Node* prev) {
 		}
 		case OPERATION_RANK: {
 			result->rank = get_rank(prev->m1);
+			result->has_rank = true;
 			break;
 		}
 		case OPERATION_POWER: {
@@ -78,6 +79,9 @@ Result* operations_loop(Node* prev) {
 	if(result->result_matrix != NULL) {
 		result->determinant = get_determinant(result->result_matrix);
 		result->rank = get_rank(result->result_matrix);
+		result->has_determinant = true;
+		result->has_rank = true;
+		
 	}
 
 
