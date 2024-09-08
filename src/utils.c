@@ -33,47 +33,14 @@ void fill_matrix(Matrix* matrix) {
 
 Matrix* create_matrix(int rows, int cols) {
 
-	// Matrix* matrix = calloc(1, sizeof(Matrix));
-
-	// matrix->rows = rows;
-	// matrix->cols = cols;
-
-	// matrix->data = calloc(rows, sizeof(double*));
-
-	// for(int i = 0; i < rows; i++) {
-		// matrix->data[i] = calloc(cols, sizeof(double));
-	// }
-
-	// return matrix;
-	
-	Matrix* matrix = calloc(1, sizeof(Matrix)); // Use calloc for Matrix
-	if (!matrix) {
-		exit(1);
-		return NULL;
-	}
+	Matrix* matrix = calloc(1, sizeof(Matrix));
 	matrix->rows = rows;
 	matrix->cols = cols;
 
-	matrix->data = calloc(rows, sizeof(double*)); // Use calloc for data array
-	if (!matrix->data) {
-		// Handle allocation failure
-		exit(2);
-		free(matrix); // Free previously allocated memory
-		return NULL;
-	}
+	matrix->data = calloc(rows, sizeof(double*));
 
 	for(int i = 0; i < rows; i++) {
-		matrix->data[i] = calloc(cols, sizeof(double)); // Use calloc for each row
-		if (!matrix->data[i]) {
-			// Handle allocation failure
-			exit(3);
-			for (int j = 0; j < i; j++) {
-				free(matrix->data[j]);
-			}
-			free(matrix->data);
-			free(matrix);
-			return NULL;
-		}
+		matrix->data[i] = calloc(cols, sizeof(double));
 	}
 
 	return matrix;

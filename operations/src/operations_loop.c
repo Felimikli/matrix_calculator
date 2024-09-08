@@ -1,8 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "operations_loop.h"
-#include "common_structs.h"
-#include "funcs.h"
+#include "operations.h"
 
 
 Result* operations_loop(Node* prev) {

@@ -1,5 +1,5 @@
 #pragma once
 
-#include "utils.h"
+#include "common_structs.h"
 
 Result* operations_loop(Node* prev);

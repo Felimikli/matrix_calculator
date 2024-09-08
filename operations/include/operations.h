@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utils.h"
+#include "common_structs.h"
 
 Matrix* add_matrices(Matrix* matrix1, Matrix* matrix2);
 Matrix* substract_matrices(Matrix* matrix1, Matrix* matrix2);
