@@ -39,6 +39,8 @@ typedef struct Node {
 typedef struct List {
 	Node* head;
 	Node* tail;
+	Node* curr;
+	int length;
 } List;
 
 typedef struct Result {
