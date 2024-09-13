@@ -1,6 +1,7 @@
 #include "operations.h"
 #include "operations_utils.h"
 #include <math.h>
+#include <stddef.h>
 
 Matrix* add_matrices(Matrix* matrix1, Matrix* matrix2) {
 
@@ -151,7 +152,9 @@ Matrix* inverse(Matrix* matrix) {
 					}
 					sign = ((i+j) % 2 == 0) ? 1 : -1;
 					result_matrix->data[i][j] = inv_det * sign * get_determinant(minor);
-					free_matrix(minor);
+					if(minor != NULL) {
+						free_matrix(minor);
+					}
 				}
 			}
 			break;
@@ -180,7 +183,9 @@ Matrix* matrix_power(Matrix* matrix, int exponent) {
 			result_matrix = copy_matrix(matrix);
 			for (int i = 1; i < exponent; i++) {
 				Matrix* temp_matrix = multiply_matrices(result_matrix, matrix);
-				free_matrix(result_matrix);
+				if(result_matrix != NULL) {
+					free_matrix(result_matrix);
+				}
 				result_matrix = temp_matrix;
 
 			}
@@ -201,8 +206,9 @@ double get_determinant(Matrix* matrix){
 	for(int i = 0; i < det_matrix->cols && i < det_matrix->rows; i++) {
 		det *= det_matrix->data[i][i];
 	}
-
-	free_matrix(det_matrix);
+	if(det_matrix != NULL) {
+		free_matrix(det_matrix);
+	}
 
 	if(row_exchanges%2 == 0) {
 		return det;
@@ -219,6 +225,8 @@ int get_rank(Matrix* matrix) {
 			rank++;
 		}
 	}
-	free_matrix(rank_matrix);
+	if(rank_matrix != NULL) {
+		free_matrix(rank_matrix);
+	}
 	return rank;
 }

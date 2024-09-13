@@ -1,6 +1,8 @@
 #include "../include/utils.h"
+#include "../include/common_structs.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 int get_matrix_rows(int mult_cols) {
 	int rows;
@@ -47,7 +49,9 @@ Matrix* create_matrix(int rows, int cols) {
 }
 
 Matrix* replace_matrix(Matrix* destination, Matrix* source) {
-	free_matrix(destination);
+	if(destination != NULL) {
+		free_matrix(destination);
+	}
 	return source;
 }
 
@@ -73,15 +77,17 @@ void print_matrix(Matrix* matrix) {
 }
 
 void free_matrix(Matrix* matrix) {
-	if(matrix) {
-		if(matrix->data) {
+	if(matrix != NULL) {
+		if(matrix->data != NULL) {
 			for (int i = 0; i < matrix->rows; i++) {
-				free(matrix->data[i]);
+				if(matrix->data[i] != NULL) {
+					free(matrix->data[i]);
+				}
 			}
+			free(matrix->data);
 		}
-		free(matrix->data);
+		free(matrix);
 	}
-	free(matrix);
 }
 
 void exchange_matrix_rows(Matrix* matrix, int row1, int row2) {

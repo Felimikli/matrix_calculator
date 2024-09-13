@@ -9,14 +9,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_SOURCE_DIR}/operations/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/matrix_history/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/ui/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/state_manager/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/interface/include
 )
 
 # Add subdirectories
 add_subdirectory(operations)
-add_subdirectory(matrix_history)
-add_subdirectory(ui)
+add_subdirectory(state_manager)
+add_subdirectory(interface)
 
 # Add the executable target
 add_executable(matrix_calc
@@ -27,7 +27,7 @@ add_executable(matrix_calc
 # Link libraries
 target_link_libraries(matrix_calc
     operations
-    history_management
-    ui
+    state_manager
+    interface
 )
 

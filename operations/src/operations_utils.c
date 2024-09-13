@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "operations_utils.h"
+#include <stddef.h>
 
 void exchange_matrix_rows(Matrix* matrix, int row1, int row2) {
 	double temp;
@@ -36,13 +37,15 @@ Matrix* copy_matrix(Matrix* matrix) {
 }
 
 void free_matrix(Matrix* matrix) {
-	if(matrix) {
-		if(matrix->data) {
+	if(matrix != NULL) {
+		if(matrix->data != NULL) {
 			for (int i = 0; i < matrix->rows; i++) {
-				free(matrix->data[i]);
+				if(matrix->data[i] != NULL) {
+					free(matrix->data[i]);
+				}
 			}
+			free(matrix->data);
 		}
-		free(matrix->data);
+		free(matrix);
 	}
-	free(matrix);
 }

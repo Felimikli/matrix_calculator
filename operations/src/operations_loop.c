@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "operations_loop.h"
 #include "operations.h"
+#include <stddef.h>
 
 
 Result* operations_loop(Node* prev) {
